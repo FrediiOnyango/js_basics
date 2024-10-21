@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce Product Management</title>
+    <link rel="stylesheet" href="./assets/stylesheets/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Product Management System</h1>
+    </header>
+
+    <main>
+      <div class="search">
+        <h2>Search Products</h2>
+        <input
+          type="text"
+          id="searchQuery"
+          placeholder="Search by name or tags"
+        />
+        <button id="searchButton">Search</button>
+        <ul id="searchResults"></ul>
+        <!-- Dynamically generated search results -->
+      </div>
+      <!-- Product Form -->
+      <section class="product-form">
+        <h2>Add a New Product</h2>
+        <form id="productForm">
+          <label for="productId">Product ID</label>
+          <input
+            type="number"
+            id="productId"
+            placeholder="Product ID"
+            required
+          />
+          <label for="productName">Product Name</label>
+          <input
+            type="text"
+            id="productName"
+            placeholder="Product Name"
+            required
+          />
+          <label for="productPrice">Product Price</label>
+          <input
+            type="number"
+            id="productPrice"
+            placeholder="Product Price"
+            required
+          />
+          <label for="productCategory">Category</label>
+          <input
+            type="text"
+            id="productCategory"
+            placeholder="Category"
+            required
+          />
+          <label for="productTags">Tags</label>
+          <input
+            type="text"
+            id="productTags"
+            placeholder="Tags (comma-separated)"
+            required
+          />
+          <button type="submit">Add Product</button>
+        </form>
+      </section>
+
+      <!-- Product Inventory -->
+      <section class="inventory">
+        <h2>Inventory</h2>
+        <ul id="inventoryList"></ul>
+        <!-- Dynamically generated product list -->
+      </section>
+
+      <!-- Shopping Cart -->
+      <section class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cartList"></ul>
+        <!-- Dynamically generated cart list -->
+        <div id="totalPrice">Total Price: KES 0</div>
+      </section>
+
+      <!-- Search Bar -->
+    </main>
+
+    <script src="./assets/scripts/products.js"></script>
+  </body>
+</html>

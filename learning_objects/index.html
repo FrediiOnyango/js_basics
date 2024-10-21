@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn JS</title>
+</head>
+<body>
+    <h1>JavaScript Object</h1>
+
+    <p id="Object"></p>
+    
+
+
+    <script>
+        // Product Object constructor #1
+    function Product(id, name, price, category, tags){
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.category = category;
+    this.tags = tags
+    }
+
+
+    // Method to apply discount #2
+    Product.prototype.applyDiscount = function(percentage) {
+        this.price = this.price - (this.price * (percentage / 100));
+    }
+
+
+
+    // Inventory Object #3
+
+    function Inventory(){
+        this.products = []
+    }
+
+    // Method to add a product
+
+    Inventory.prototype.addProduct = function(product){
+        this.products.push(product)
+    }
+
+    // Method to remove a product by ID
+
+    Inventory.prototype.removeProduct = function(productId){
+        this.products = this.products.filter(product => product.id !== productId)
+    }
+
+    // Method to get a product by ID
+    
+    Inventory.prototype.getProductById = function(productId){
+        return this.products.find(product => product.id === productId)
+    }
+
+    // Method to get a product by category
+
+    Inventory.prototype.getProductByCategory = function(category){
+        return this.products.filter(product => product.category === category)
+    }
+
+    // Method to apply discount to all products in a category
+
+    Inventory.prototype.applyDiscountToCategory = function(category, discountPercentage){
+        this.products.forEach(product => {
+            if (product.category === category){
+                product.applyDiscount(discountPercentage)
+            }
+        })
+    }
+
+
+    // Search Engine Object #4
+
+    function SearchEngine(){}
+
+    // Method to search products by name or tags (case-insensitive)
+
+    SearchEngine.prototype.search = function(inventory, query){
+        const lowerQuery = query.toLowerCase();
+
+        return inventory.products.filter(product =>
+            product.name.toLowerCase().includes(lowerQuery) ||
+            product.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
+        )
+    }
+
+    // Shopping Cart Object #5
+
+    function ShoppingCart(){
+        this.items = [] //Property to store array of products and their quantities
+    }
+
+
+    // Method to add an item to the cart
+
+    ShoppingCart.prototype.addItem = function(product, quantity){
+        const existingItem = this.items.find(item => item.product.id === product.id)
+
+
+        if (existingItem){
+            existingItem.quantity += quantity
+        }
+        else {
+            this.items.push({ product: product, quantity: quantity })
+        }
+    }
+
+    // Method to remove an item from the cart
+
+
+    ShoppingCart.prototype.removeItem = function(productId){
+        this.items = this.items.filter(item => item.product.id !== productId)
+    }
+
+    // Method to update quantity of an item in the cart
+
+
+    ShoppingCart.prototype.updateQuantity = function(productId, newQuantity){
+        const item = this.items.find(item => item.product.id === productId)
+        if (item){
+            item.quantity = newQuantity
+        }
+    }
+
+
+    // Method to get the total price of items in the cart
+
+    ShoppingCart.prototype.getTotalPrice = function(){
+        return this.items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    }
+
+
+    // Method to apply a discount code
+
+
+    ShoppingCart.prototype.applyDiscountCode = function(code) {
+        // Let's assume all valide codes gives a 10% discound
+
+        const ValidCodes = ['SAVE10', 'DISCOUNT'];
+
+        if (ValidCodes.includes(code)){
+            const totalPrice = this.getTotalPrice();
+
+            return totalPrice - (totalPrice * 0.1)
+        }
+        else {
+            return this.getTotalPrice()
+        }
+
+    }
+
+
+
+
+    </script>
+</body>
+
+    
+</body>
+</html>
