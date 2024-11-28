@@ -54,14 +54,22 @@ console.log("Null", null, "Type", typeof null);
 
 // Exercise 2
 // Prompt for Name and Age:
-let userName = prompt("Enter Your Name: ");
+// let userName = prompt("Enter Your Name: ");
 
-let userAge = Number(prompt("Enter Your Age: "));
+// let userAge = Number(prompt("Enter Your Age: "));
 
 // Calculate Year of Birth:
 
-let currentYear = new Date().getFullYear();
+// let currentYear = new Date().getFullYear();
 
-yearOfBirth = currentYear - userAge;
+// yearOfBirth = currentYear - userAge;
 
-alert(`Hello ${userName}! You were born in the year ${yearOfBirth}.`);
+// alert(`Hello ${userName}! You were born in the year ${yearOfBirth}.`);
+
+// Conditional Logic Practice
+
+let number = 1;
+
+if (number > 0) {
+  console.log(`${number} is positive`);
+}
